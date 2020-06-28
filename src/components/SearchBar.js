@@ -1,14 +1,9 @@
 import React, { useState } from "react";
 
-import { getLinks } from "../../api";
+import { getLinks } from "../api";
 
 const SearchBar = ({ setResults }) => {
-  const [name, setName] = useState("");
   const [text, setText] = useState("");
-
-  const handleNameChange = (event) => {
-    setName(event.target.value);
-  };
 
   const handleTextChange = (event) => {
     setText(event.target.value);
@@ -17,10 +12,7 @@ const SearchBar = ({ setResults }) => {
   async function handleSubmit(event) {
     event.preventDefault();
 
-    const links = await getLinks({
-      linkname,
-      count,
-    });
+    const { links } = await getLinks();
 
     setResults(links);
   }
@@ -32,8 +24,8 @@ const SearchBar = ({ setResults }) => {
         <input
           type="text"
           placeholder="Link name"
-          value={name}
-          onChange={handleNameChange}
+          value={text}
+          onChange={handleTextChange}
         />
         <button type="submit">Search</button>
       </form>

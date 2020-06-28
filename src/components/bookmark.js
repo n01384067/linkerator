@@ -1,17 +1,17 @@
 import React from "react";
 
-import "./bookmark.css";
+import "./Bookmark.css";
 
-const bookmark = ({ linkname, count, comment }) => {
+const Bookmark = ({ key, bookmark }) => {
   return (
     <div className="Bookmark">
       <div className="url">
-        <p className="linkname">{linkname}</p>
-        <p className="count">{count}</p>
-        <p className="comment">{comment}</p>
+        <p className="linkname">{bookmark.linkname}</p>
+        <p className="count">{bookmark.count}</p>
+        <p className="comment">{bookmark.comment}</p>
       </div>
     </div>
   );
 };
 
-export default bookmark;
+export default Bookmark;

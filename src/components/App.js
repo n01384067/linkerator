@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-
+import SearchBar from "./SearchBar";
 import { getLinks } from "../api";
+import SearchResults from "./SearchResults";
 
 const App = () => {
   const [links, setLinks] = useState("");
@@ -9,7 +10,7 @@ const App = () => {
     getLinks()
       .then((response) => {
         console.log(response);
-        setLinks(response.links);
+        setLinks([]);
       })
       .catch((error) => {
         console.log(error.message);
@@ -19,9 +20,8 @@ const App = () => {
   return (
     <div className="App">
       <h1>Search for links</h1>
-      <div>
-        {links ? links.map((link) => <div>{link.linkname}</div>) : <div></div>}
-      </div>
+      <SearchBar setResults={setLinks}></SearchBar>
+      <SearchResults results={links} />
     </div>
   );
 };

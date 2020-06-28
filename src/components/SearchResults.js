@@ -1,21 +1,20 @@
 import React from "react";
 
 import "./SearchResults.css";
-import bookmark from "./bookmark";
+import Bookmark from "./Bookmark";
 
 const SearchResults = ({ results }) => {
   return (
     <div id="results">
       <h3>Links Found: ({results.length} results):</h3>
       <div className="linkList">
-        {results.map((result) => (
-          <bookmark
-            key={result.id}
-            addCardToDeck={addCardToDeck}
-            removeCardFromDeck={removeCardFromDeck}
-            {...result}
-          />
-        ))}
+        {results ? (
+          results.map((result) => (
+            <Bookmark key={result.id} bookmark={result} />
+          ))
+        ) : (
+          <div>no results</div>
+        )}
       </div>
     </div>
   );
